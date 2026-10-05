@@ -3,6 +3,14 @@ import { Composition, Folder } from "remotion";
 import { HelloWorld } from "./HelloWorld";
 import { Logo } from "./HelloWorld/Logo";
 import { Title } from "./HelloWorld/Title";
+import { Portfolio } from "./Portfolio";
+import { PortfolioShowcase } from "./showcase/PortfolioShowcase";
+import { ChatChapter, EleveChapter, PulseOpsChapter } from "./showcase/scenes/Chapters";
+import { OutroScene } from "./showcase/scenes/OutroScene";
+import { RecordScene } from "./showcase/scenes/RecordScene";
+import { StackScene } from "./showcase/scenes/StackScene";
+import { StatementScene } from "./showcase/scenes/StatementScene";
+import { TitleScene } from "./showcase/scenes/TitleScene";
 
 // Each <Composition> is an entry in the sidebar!
 
@@ -51,7 +59,34 @@ export const RemotionRoot: React.FC = () => {
           titleColor: "#000000",
         }}
       />
+      <Composition
+        id="Portfolio"
+        component={Portfolio}
+        durationInFrames={300}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
 
+      {/* Each scene of the showcase, previewable on its own (transparent background). */}
+      <Folder name="Showcase-Scenes">
+        <Composition id="Showcase-Title" component={TitleScene} durationInFrames={120} fps={30} width={1920} height={1080} />
+        <Composition id="Showcase-Statement" component={StatementScene} durationInFrames={150} fps={30} width={1920} height={1080} />
+        <Composition id="Showcase-PulseOps" component={PulseOpsChapter} durationInFrames={270} fps={30} width={1920} height={1080} />
+        <Composition id="Showcase-Chat" component={ChatChapter} durationInFrames={270} fps={30} width={1920} height={1080} />
+        <Composition id="Showcase-Eleve" component={EleveChapter} durationInFrames={270} fps={30} width={1920} height={1080} />
+        <Composition id="Showcase-Stack" component={StackScene} durationInFrames={180} fps={30} width={1920} height={1080} />
+        <Composition id="Showcase-Record" component={RecordScene} durationInFrames={150} fps={30} width={1920} height={1080} />
+        <Composition id="Showcase-Outro" component={OutroScene} durationInFrames={150} fps={30} width={1920} height={1080} />
+      </Folder>
+      <Composition
+        id="PortfolioShowcase"
+        component={PortfolioShowcase}
+        durationInFrames={1560}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
     </>
   );
 };
